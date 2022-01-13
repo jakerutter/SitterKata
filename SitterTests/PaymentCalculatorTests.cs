@@ -170,5 +170,39 @@ namespace SitterTests
 
             Assert.Equal(expected, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
         }
+
+        [Theory]
+        [InlineData(6, 20, 19, -1)]  //Before 5pm
+        [InlineData(25, 24, 22, -1)] //Over 24 hours
+        [InlineData(-1, 24, 23, -1)] //Negative value
+        public void BabysitterPassesInvalidStartTimeAndGetsNegativeOne(int startTime, int endTime, int bedTime, int expected)
+        {
+            PaymentCalculator paymentCalc = new PaymentCalculator();
+
+            Assert.Equal(expected, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
+        }
+
+        [Theory]
+        [InlineData(17, 6, 19, -1)]  //Before 5pm
+        [InlineData(17, 25, 19, -1)] //Over 24 hours
+        [InlineData(17, -1, 19, -1)] //Negative value
+        public void BabysitterPassesInvalidEndTimeAndGetsNegativeOne(int startTime, int endTime, int bedTime, int expected)
+        {
+            PaymentCalculator paymentCalc = new PaymentCalculator();
+
+            Assert.Equal(expected, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
+        }
+
+        [Theory]
+        [InlineData(17, 24, 1, -1)]  //After midnight
+        [InlineData(17, 24, 16, -1)] //Before 5pm
+        [InlineData(17, 24, 25, -1)] //Over 24 hours
+        [InlineData(17, 24, -1, -1)] //Negative value
+        public void BabysitterPassesInvalidBedTimeAndGetsNegativeOne(int startTime, int endTime, int bedTime, int expected)
+        {
+            PaymentCalculator paymentCalc = new PaymentCalculator();
+
+            Assert.Equal(expected, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
+        }
     }
 }
