@@ -8,6 +8,10 @@ namespace SitterKata
         const int PostBedTimePay = 8;
         const int AfterMidnightPay = 16;
 
+        private int hoursBeforeBedTime = 0;
+        private int hoursAfterBedTime = 0;
+        private int hoursAfterMidNight = 0;
+
         public int CalculateEarnings(int startTime, int endTime, int bedTime)
         {
             //shift ends after midnight
@@ -15,27 +19,35 @@ namespace SitterKata
             {
                 if (startTime > 17)
                 {
-                    return endTime * AfterMidnightPay;
+                    hoursAfterMidNight = endTime;
                 }
                 else
                 {
-                    return (endTime - startTime) * AfterMidnightPay;
+                    hoursAfterMidNight = (endTime - startTime);
                 } 
             }
 
-            if(startTime >= bedTime)
+            if (endTime > bedTime)
             {
-                return (endTime - startTime) * PostBedTimePay;
+                if (startTime > bedTime)
+                {
+                    hoursAfterBedTime = (endTime - startTime);
+                }
+                else
+                {
+                    hoursBeforeBedTime = (bedTime - startTime);
+                    hoursAfterBedTime = (endTime - bedTime);
+                }
+            }
+            else if(startTime >= 17)
+            {
+                hoursBeforeBedTime = (endTime - startTime);
             }
 
-            if (endTime >= bedTime)
-            {
-                return (bedTime - startTime) * PreBedTimePay + (endTime - bedTime) * PostBedTimePay;
-            }
-            else
-            {
-                return (endTime - startTime) * PreBedTimePay;
-            }
+
+            return (hoursBeforeBedTime * PreBedTimePay) +
+                (hoursAfterBedTime * PostBedTimePay) +
+                (hoursAfterMidNight * AfterMidnightPay);
         }
     }
 }
