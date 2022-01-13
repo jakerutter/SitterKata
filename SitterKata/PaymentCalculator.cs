@@ -57,6 +57,7 @@ namespace SitterKata
                     //worked before and after bedTime
                     else
                     {
+                        //prevent negative hours before bedtime
                         if (startTime < bedTime)
                         {
                             hoursBeforeBedTime = (bedTime - startTime);
