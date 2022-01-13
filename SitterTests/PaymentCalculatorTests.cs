@@ -119,14 +119,15 @@ namespace SitterTests
             Assert.Equal(40, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
         }
 
-        [Fact]
-        public void BabysitterWorksAllPermittedHoursrWithNinePMBedtimeAndReceives136Dollars()
+        [Theory]
+        [InlineData(17, 4, 21, 136)]
+        [InlineData(17, 4, 22, 140)]
+        [InlineData(17, 4, 19, 128)]
+        public void BabysitterWorksAllPermittedHoursWithVariousBedTimes(int startTime, int endTime, int bedTime, int expected)
         {
             PaymentCalculator paymentCalc = new PaymentCalculator();
 
-            int startTime = 17, endTime = 4, bedTime = 21;
-
-            Assert.Equal(136, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
+            Assert.Equal(expected, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
         }
     }
 }
