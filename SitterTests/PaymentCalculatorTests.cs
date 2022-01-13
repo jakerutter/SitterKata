@@ -89,5 +89,14 @@ namespace SitterTests
             Assert.Equal(0, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
         }
 
+        [Fact]
+        public void BabysitterWorksZeroHoursAfterMidnightAndReceives0Dollars()
+        {
+            PaymentCalculator paymentCalc = new PaymentCalculator();
+
+            int startTime = 1, endTime = 1, bedTime = 17;
+
+            Assert.Equal(0, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
+        }
     }
 }

@@ -10,10 +10,18 @@ namespace SitterKata
 
         public int CalculateEarnings(int startTime, int endTime, int bedTime)
         {
-
+            //shift ends after midnight
             if (endTime < 17)
             {
-                return endTime * AfterMidnightPay;
+                if (startTime > 17)
+                {
+                    return endTime * AfterMidnightPay;
+                }
+                else
+                {
+                    return (endTime - startTime) * AfterMidnightPay;
+                }
+                
             }
 
             if(startTime >= bedTime)
