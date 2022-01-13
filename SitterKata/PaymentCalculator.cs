@@ -20,8 +20,7 @@ namespace SitterKata
                 else
                 {
                     return (endTime - startTime) * AfterMidnightPay;
-                }
-                
+                } 
             }
 
             if(startTime >= bedTime)
@@ -29,7 +28,14 @@ namespace SitterKata
                 return (endTime - startTime) * PostBedTimePay;
             }
 
-            return (endTime - startTime) * PreBedTimePay;
+            if (endTime >= bedTime)
+            {
+                return (bedTime - startTime) * PreBedTimePay + (endTime - bedTime) * PostBedTimePay;
+            }
+            else
+            {
+                return (endTime - startTime) * PreBedTimePay;
+            }
         }
     }
 }
