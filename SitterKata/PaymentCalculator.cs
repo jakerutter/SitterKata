@@ -4,10 +4,8 @@ namespace SitterKata
 {
     public class PaymentCalculator
     {
-        const int PreBedTimePay = 12;
-        const int PostBedTimePay = 8;
-        const int AfterMidnightPay = 16;
-        const int FivePM = 17;
+        const int PreBedTimePay = 12, PostBedTimePay = 8, AfterMidnightPay = 16;
+        const int FivePM = 17, Midnight = 24;
 
         private int hoursBeforeBedTime = 0;
         private int hoursAfterBedTime = 0;
@@ -73,7 +71,7 @@ namespace SitterKata
                             hoursBeforeBedTime = (bedTime - startTime);
                         }
                         //make sure to subtract the greater of bedTime, startTime from 24
-                        hoursAfterBedTime = 24 - Math.Max(bedTime, startTime);
+                        hoursAfterBedTime = Midnight - Math.Max(bedTime, startTime);
                     }
                 }
             }
