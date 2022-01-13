@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitterKata", "SitterKata\SitterKata.csproj", "{04ED47E4-1828-45C8-AD56-3064D7AB5103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitterTests", "SitterTests\SitterTests.csproj", "{5D7A2E34-3BB7-40BF-A7AC-54B250BD0EB9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04ED47E4-1828-45C8-AD56-3064D7AB5103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04ED47E4-1828-45C8-AD56-3064D7AB5103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04ED47E4-1828-45C8-AD56-3064D7AB5103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04ED47E4-1828-45C8-AD56-3064D7AB5103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7A2E34-3BB7-40BF-A7AC-54B250BD0EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7A2E34-3BB7-40BF-A7AC-54B250BD0EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7A2E34-3BB7-40BF-A7AC-54B250BD0EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7A2E34-3BB7-40BF-A7AC-54B250BD0EB9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {511ACA6A-AC79-42C6-A075-B52411C37F03}
+	EndGlobalSection
+EndGlobal
