@@ -9,9 +9,10 @@ namespace SitterKata
 
         public int CalculateEarnings(int startTime, int endTime, int bedTime)
         {
-            if(startTime > bedTime)
+
+            if(startTime >= bedTime)
             {
-                return PostBedTimePay;
+                return (endTime - startTime) * PostBedTimePay;
             }
 
             return (endTime - startTime) * PreBedTimePay;
