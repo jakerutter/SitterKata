@@ -158,6 +158,17 @@ namespace SitterTests
             int startTime = 22, endTime = 2, bedTime = 22;
 
             Assert.Equal(48, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
-        } 
+        }
+
+        [Theory]
+        [InlineData(22, 24, 22, 16)]
+        [InlineData(24, 2, 22, 32)]
+        [InlineData(22, 24, 23, 20)]
+        public void BabysitterWorksUpToOrAfterMidnightEdgeCaseAndIsPayedCorrectly(int startTime, int endTime, int bedTime, int expected)
+        {
+            PaymentCalculator paymentCalc = new PaymentCalculator();
+
+            Assert.Equal(expected, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
+        }
     }
 }
