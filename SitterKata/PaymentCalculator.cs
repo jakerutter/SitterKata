@@ -4,11 +4,11 @@ namespace SitterKata
 {
     public class PaymentCalculator
     {
-        const int preBedTimePay = 12;
+        const int PreBedTimePay = 12;
 
-        public int CalculateEarnings()
+        public int CalculateEarnings(int startTime, int endTime, int bedTime)
         {
-            return preBedTimePay;
+            return (endTime - startTime) * PreBedTimePay;
         }
     }
 }
