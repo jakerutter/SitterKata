@@ -1,5 +1,4 @@
-﻿using System;
-using SitterKata;
+﻿using SitterKata;
 using Xunit;
 
 namespace SitterTests
