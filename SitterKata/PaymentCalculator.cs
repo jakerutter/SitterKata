@@ -7,6 +7,7 @@ namespace SitterKata
         const int PreBedTimePay = 12;
         const int PostBedTimePay = 8;
         const int AfterMidnightPay = 16;
+        const int FivePM = 17;
 
         private int hoursBeforeBedTime = 0;
         private int hoursAfterBedTime = 0;
@@ -14,37 +15,54 @@ namespace SitterKata
 
         public int CalculateEarnings(int startTime, int endTime, int bedTime)
         {
-            //shift ends after midnight
-            if (endTime < 17)
+            if (startTime != endTime)
             {
-                if (startTime > 17)
+                //shift ends after midnight
+                if (endTime < FivePM)
                 {
-                    hoursAfterMidNight = endTime;
+                    //we know hours after midnight will equal endTime
+                    //because endTime is less than 5pm (17) in 24 hour clock
+                    if (startTime >= FivePM)
+                    {
+                        hoursAfterMidNight = endTime;
+                    }
+                    //start time and end time are after midnight. get hours worked
+                    else
+                    {
+                        hoursAfterMidNight = (endTime - startTime);
+                    }
                 }
-                else
+                //handle cases where we know sitter worked after bedTime
+                if (endTime > bedTime)
                 {
-                    hoursAfterMidNight = (endTime - startTime);
-                } 
-            }
-
-            if (endTime > bedTime)
-            {
-                if (startTime > bedTime)
-                {
-                    hoursAfterBedTime = (endTime - startTime);
+                    //only worked after bedTime
+                    if (startTime > bedTime)
+                    {
+                        hoursAfterBedTime = (endTime - startTime);
+                    }
+                    //worked before and after bedTime
+                    else
+                    {
+                        hoursBeforeBedTime = (bedTime - startTime);
+                        hoursAfterBedTime = (endTime - bedTime);
+                    }
                 }
-                else
+                //get hours worked before bedTime
+                else if (startTime >= FivePM)
                 {
-                    hoursBeforeBedTime = (bedTime - startTime);
-                    hoursAfterBedTime = (endTime - bedTime);
+                    if (endTime >= FivePM)
+                    {
+                        hoursBeforeBedTime = (endTime - startTime);
+                    }
+                    //worked before and after bedTime
+                    else
+                    {
+                        hoursBeforeBedTime = (bedTime - startTime);
+                        hoursAfterBedTime = 24 - bedTime;
+                    }
                 }
             }
-            else if(startTime >= 17)
-            {
-                hoursBeforeBedTime = (endTime - startTime);
-            }
-
-
+            //using each hours value and the rate, calculate pay
             return (hoursBeforeBedTime * PreBedTimePay) +
                 (hoursAfterBedTime * PostBedTimePay) +
                 (hoursAfterMidNight * AfterMidnightPay);
