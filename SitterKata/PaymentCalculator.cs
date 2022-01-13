@@ -57,8 +57,12 @@ namespace SitterKata
                     //worked before and after bedTime
                     else
                     {
-                        hoursBeforeBedTime = (bedTime - startTime);
-                        hoursAfterBedTime = 24 - bedTime;
+                        if (startTime < bedTime)
+                        {
+                            hoursBeforeBedTime = (bedTime - startTime);
+                        }
+                        //make sure to subtract the greater of bedTime, startTime from 24
+                        hoursAfterBedTime = 24 - Math.Max(bedTime, startTime);
                     }
                 }
             }
