@@ -3,7 +3,9 @@
 ## TDD sitter kata written in .Net Core 3.1 using C# and XUnit for testing
 
 ### Assumptions
-I made the assumption that bed time will be no later than midnight
+- The calculator will only be called with integer values.
+- Times are represented by hours as integers in standard 24 hour format with the exception of midnight which is represented as 24
+- No bed time will exceed midnight
 
 Background
 ----------
