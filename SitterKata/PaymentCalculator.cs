@@ -6,9 +6,15 @@ namespace SitterKata
     {
         const int PreBedTimePay = 12;
         const int PostBedTimePay = 8;
+        const int AfterMidnightPay = 16;
 
         public int CalculateEarnings(int startTime, int endTime, int bedTime)
         {
+
+            if (endTime < 17)
+            {
+                return AfterMidnightPay;
+            }
 
             if(startTime >= bedTime)
             {
