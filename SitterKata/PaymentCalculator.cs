@@ -13,7 +13,7 @@ namespace SitterKata
 
             if (endTime < 17)
             {
-                return AfterMidnightPay;
+                return endTime * AfterMidnightPay;
             }
 
             if(startTime >= bedTime)

@@ -58,5 +58,16 @@ namespace SitterTests
             Assert.Equal(16, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
         }
 
+        [Theory]
+        [InlineData(0, 2, 20, 32)]
+        [InlineData(0, 3, 17, 48)]
+        [InlineData(0, 4, 19, 64)]
+        public void BabysitterWorksMultipleHoursAfterMidnightAndReceives16DollarsPerHour(int startTime, int endTime, int bedTime, int expected)
+        {
+            PaymentCalculator paymentCalc = new PaymentCalculator();
+
+            Assert.Equal(expected, paymentCalc.CalculateEarnings(startTime, endTime, bedTime));
+        }
+
     }
 }
